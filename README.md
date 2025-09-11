@@ -1,28 +1,32 @@
-# prometheus-labs
-This repo is desigend to explore prometheus and monitoring features
-With bellow script you can easily install node exporter latest version to expose your server metrics to be feed in your prometheus scenario
-```
-export RELEASE="1.9.1"
-wget https://github.com/prometheus/node_exporter/releases/download/v$RELEASE/node_exporter-$RELEASE.linux-386.tar.gz
-tar xzf node_exporter-$RELEASE.linux-386.tar.gz
-cd node_exporter-$RELEASE.linux-386/
-mv ./node_exporter /usr/local/bin/
-useradd --no-create-home --shell /bin/false node_exporter
+# 🚀 Prometheus Labs  
 
-echo  -n "
-Description=Node Exporter
-After=network.target
+Welcome to **Prometheus Labs** – a hands-on playground for monitoring enthusiasts.  
+This repo is designed to **explore Prometheus, exporters, alerting, dashboards, and advanced monitoring scenarios**.  
 
-[Service]
-User=node_exporter
-Group=node_exporter
-Type=simple
-ExecStart=/usr/local/bin/node_exporter
+---
 
-[Install]
-WantedBy=multi-user.target " >  /etc/systemd/system/node_exporter.service
+## 📌 Roadmap of Labs
+We’ll go step by step, starting from the basics and moving towards advanced use cases:
 
+1. 🖥️ Install and configure **Node Exporter**  
+2. 📊 Setup **Prometheus server** and scrape targets  
+3. 📈 Visualize metrics in **Grafana**  
+4. 🚨 Define **alerting rules** and test with **Alertmanager**  
+5. 🛠️ Custom exporters (write your own exporter in Python/Go)  
+6. 🐳 Monitoring **Docker & Kubernetes clusters**  
+7. ⚡ Advanced labs (Recording rules, Service discovery, Blackbox monitoring, etc.)
 
-systemctl daemon-reload
-systemctl enable --now node_exporter.service
-```
+---
+
+## 🖥️ Step 1: Install Node Exporter
+First step: install **Node Exporter** to expose system metrics (CPU, memory, disk, network, …).  
+Run the following commands on your target server:
+
+```bash
+wget https://raw.githubusercontent.com/sadeqrm/prometheus-labs/main/nodeexporter.sh -O nodeexporter.sh
+chmod +x nodeexporter.sh
+./nodeexporter.sh
+Once running, Node Exporter exposes metrics on:
+👉 http://<server-ip>:9100/metrics
+
+For next step we need to install prometheus :
