@@ -26,6 +26,8 @@ Run the following commands on your target server:
 wget https://raw.githubusercontent.com/sadeqrm/prometheus-labs/main/nodeexporter.sh -O nodeexporter.sh
 chmod +x nodeexporter.sh
 ./nodeexporter.sh
+```
+
 Once running, Node Exporter exposes metrics on:
 👉 http://<server-ip>:9100/metrics
 
