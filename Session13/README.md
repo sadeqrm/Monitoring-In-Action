@@ -148,7 +148,7 @@ systemctl status prometheus
 *  Enable it at boot
 *  Check its running status
 
-## ✅ Verification
+#### ✅ Verification
 Once everything is up, open the Prometheus web UI at:
 
     👉 http://<server-ip>:9090
