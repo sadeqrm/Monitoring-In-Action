@@ -37,7 +37,7 @@ For next step we need to install prometheus :
 
 ## 📊 Step 2: Setup Prometheus Server  
 
-In this step, we will install and configure **Prometheus Server** using the provided script [`prometheusinstallation.sh`]( ./Prometheus Installation/prometheusinstallation.sh).  
+In this step, we will install and configure **Prometheus Server** using the provided script [`prometheusinstallation.sh`](Session13/Prometheus Installation/prometheusinstallation.sh).  
 This script automates the setup, but let’s break it down to understand each part.  
 
 ---
