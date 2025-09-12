@@ -23,7 +23,7 @@ First step: install **Node Exporter** to expose system metrics (CPU, memory, dis
 Run the following commands on your target server:
 
 ```bash
-wget https://raw.githubusercontent.com/sadeqrm/prometheus-labs/main/nodeexporter.sh -O nodeexporter.sh
+wget https://raw.githubusercontent.com/sadeqrm/Monitoring-In-Action/main/Session13/NodeExporter-Installation/nodeexporter.sh
 chmod +x nodeexporter.sh
 ./nodeexporter.sh
 ```
@@ -36,7 +36,11 @@ For next step we need to install prometheus :
 ---
 
 ## 📊 Step 2: Setup Prometheus Server  
-
+```bash
+wget https://raw.githubusercontent.com/sadeqrm/Monitoring-In-Action/main/Session13/Prometheus-Installation/prometheusinstallation.sh
+chmod +x prometheusinstallation.sh
+./prometheusinstallation.sh
+```
 In this step, we will install and configure **Prometheus Server** using the provided script [`prometheusinstallation.sh`](./Prometheus-Installation/prometheusinstallation.sh).  
 This script automates the setup, but let’s break it down to understand each part.
 
