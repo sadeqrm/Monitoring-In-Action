@@ -154,3 +154,53 @@ Once everything is up, open the Prometheus web UI at:
     👉 http://<server-ip>:9090
     You should see the Prometheus dashboard.
     From here, we can move to adding more scrape targets, rules, and dashboards.
+---
+
+## 📡 Step 2.1: Add a Scraper Target to Prometheus  
+
+Now that Prometheus is installed and running, we need to **add targets** for scraping metrics.  
+By default, the config only scrapes the local Node Exporter (`127.0.0.1:9100`).  
+Let’s add another Node Exporter instance running on a remote server at **192.168.6.46:9100**.  
+
+---
+
+### 📝 Update `prometheus.yml`
+Open the Prometheus configuration file:  
+
+```bash
+sudo nano /etc/prometheus/prometheus.yml
+```
+
+Find the scrape_configs section and update it as follows:
+```bash
+scrape_configs:
+  # Local Node Exporter
+  - job_name: 'NodeExporter-local'
+    static_configs:
+      - targets:
+          - 127.0.0.1:9100
+
+  # Remote Node Exporter
+  - job_name: 'NodeExporter-remote'
+    static_configs:
+      - targets:
+          - 192.168.6.46:9100
+```
+
+## 🔄 Apply the Changes
+Reload Prometheus so it picks up the new configuration:
+```bash
+sudo systemctl restart prometheus
+sudo systemctl status prometheus
+```
+✅ Verify in Prometheus UI
+
+Open the Prometheus web interface:
+👉 http://<prometheus-server-ip>:9090/targets
+
+Under Targets, you should now see both:
+
+*  NodeExporter-local → 127.0.0.1:9100
+*  NodeExporter-remote → 192.168.6.46:9100
+  
+## Both should show as UP if Prometheus can reach them.
