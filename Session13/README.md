@@ -187,13 +187,13 @@ scrape_configs:
           - 192.168.6.46:9100
 ```
 
-## 🔄 Apply the Changes
+#### 🔄 Apply the Changes
 Reload Prometheus so it picks up the new configuration:
 ```bash
 sudo systemctl restart prometheus
 sudo systemctl status prometheus
 ```
-✅ Verify in Prometheus UI
+#### ✅ Verify in Prometheus UI
 
 Open the Prometheus web interface:
 👉 http://<prometheus-server-ip>:9090/targets
@@ -203,4 +203,39 @@ Under Targets, you should now see both:
 *  NodeExporter-local → 127.0.0.1:9100
 *  NodeExporter-remote → 192.168.6.46:9100
   
-## Both should show as UP if Prometheus can reach them.
+#### Both should show as UP if Prometheus can reach them.
+---
+
+## 🎨 Step 3: Install Grafana on Debian / Ubuntu  
+
+To visualize the metrics collected by Prometheus, next we will install Grafana on your Debian/Ubuntu server.  
+Choose one of the installation methods below (APT repository is recommended for easy upgrades).
+
+---
+
+### 🧰 Method A: Install via APT Repository (Recommended)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y apt-transport-https software-properties-common wget
+sudo mkdir -p /etc/apt/keyrings/
+wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+sudo apt-get update
+sudo apt-get install grafana
+```
+
+*  This adds Grafana Labs’s repository to your system so Grafana can be updated automatically.
+*  Installs the OSS (open source) edition by default.
+
+### 🛠 Method B: Install via .deb Package
+
+Go to the Grafana download page and select the version you want.
+Download the .deb for Debian/Ubuntu.
+
+Install with dpkg v12.1.1:
+```bash
+sudo apt-get install -y adduser libfontconfig1 musl
+wget https://dl.grafana.com/grafana/release/12.1.1/grafana_12.1.1_16903967602_linux_amd64.deb
+sudo dpkg -i grafana_12.1.1_16903967602_linux_amd64.deb
+```
