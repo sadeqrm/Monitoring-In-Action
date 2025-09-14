@@ -246,3 +246,67 @@ sudo systemctl daemon-reload
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
 sudo systemctl status grafana-server
+```
+---
+
+## 📈 Step 3: Visualize Metrics in Grafana  
+
+Now that Grafana is installed and running, let’s use it to visualize the metrics we’re scraping with Prometheus.  
+
+---
+
+### 🔌 3.1 Add Prometheus as a Data Source  
+
+1. Open Grafana in your browser:  
+   👉 `http://<grafana-server-ip>:3000`  
+
+2. Login with default credentials (user: `admin`, password: `admin`)  
+
+3. In the left menu, go to:  
+   **Connections → Data sources → Add data source**  
+
+4. Select **Prometheus**  
+
+5. Configure the following:  
+   - **URL:** `http://<prometheus-server-ip>:9090`  
+   - Leave other settings as default  
+
+6. Click **Save & test**.  
+   If everything is correct, you should see `Data source is working`.  
+
+---
+
+### 📊 3.2 Import Node Exporter Dashboard  
+
+Instead of building dashboards from scratch, we can import community dashboards for Node Exporter.  
+
+1. In Grafana’s left menu, click:  
+   **Dashboards → + Import**  
+
+2. Enter a dashboard ID from [Grafana Dashboards](https://grafana.com/grafana/dashboards/) gallery.  
+   A popular one for Node Exporter is: **1860**  
+
+3. Click **Load**  
+
+4. Select your Prometheus data source when prompted  
+
+5. Click **Import**  
+
+Now you should see a detailed dashboard with metrics like:  
+- CPU usage  
+- Memory utilization  
+- Disk I/O  
+- Network traffic  
+<p align="center">
+  <img width="1536" height="934" alt="image" src="https://github.com/user-attachments/assets/659d5820-af5d-49e3-888e-b50aae5804f7" />
+</p>
+
+
+---
+
+### ✅ Result  
+
+At this point, Grafana is connected to Prometheus and visualizing metrics from your Node Exporter instances.  
+You can repeat the same process to import dashboards for other exporters (e.g. Docker, Kubernetes, databases).  
+
+👉 Next step: we’ll move on to **Alerting** using Prometheus + Alertmanager.  
