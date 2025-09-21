@@ -310,3 +310,33 @@ At this point, Grafana is connected to Prometheus and visualizing metrics from y
 You can repeat the same process to import dashboards for other exporters (e.g. Docker, Kubernetes, databases).  
 
 👉 Next step: we’ll move on to **Alerting** using Prometheus + Alertmanager.  
+
+---
+
+## 🚨 Step 4: Alerting with Prometheus & Alertmanager  
+
+Now that we have Prometheus scraping metrics and Grafana visualizing them, the next step is to configure **Alerting**.  
+This involves two parts:  
+1. Installing and configuring **Alertmanager**  
+2. Defining **alerting rules** in Prometheus (e.g. CPU > 80%)  
+
+---
+
+### ⚙️ 4.1 Install Alertmanager  
+
+We use the script [`alertmanager-install.sh`](./alertmanager-install.sh) which:  
+- Downloads and installs Alertmanager  
+- Creates a system user  
+- Sets up a configuration for **Telegram notifications**  
+- Creates a systemd service  
+
+Run the script:  
+
+```bash
+chmod +x alertmanager-install.sh
+sudo ./alertmanager-install.sh
+```
+After installation, Alertmanager will be running on:
+👉 http://<server-ip>:9093
+
+
