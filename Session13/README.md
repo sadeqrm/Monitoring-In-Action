@@ -324,7 +324,7 @@ This involves two parts:
 
 ### ⚙️ 4.1 Install Alertmanager  
 
-We use the script [`alertmanager-install.sh`](./Session13/Alerting-Installation/alertmanager-install.sh) which:  
+We use the script [`alertmanager-install.sh`](/Session13/Alerting-Installation/alertmanager-install.sh) which:  
 - Downloads and installs Alertmanager  
 - Creates a system user  
 - Sets up a configuration for **Telegram notifications**  
