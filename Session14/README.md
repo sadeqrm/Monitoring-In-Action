@@ -136,6 +136,7 @@ scrape_configs:
   - job_name: 'cadvisor'
     static_configs:
       - targets: ['localhost:8080']
+```
 
 ### Scraping Custom Metrics
 1. Example Python app:
@@ -145,5 +146,5 @@ from prometheus_client import Counter, start_http_server
 c = Counter('my_requests_total', 'Total requests')
 start_http_server(8000)
 c.inc()  # increment counter
-
+```
 
