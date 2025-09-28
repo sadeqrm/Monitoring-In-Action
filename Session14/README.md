@@ -85,13 +85,14 @@ Prometheus is often paired with **Grafana** for visualization and **cAdvisor** f
 - **Example**: Number of HTTP requests.
 ```text
 http_requests_total{method="GET", handler="/api"} 1027
-
+```
 
 ### Gauge
 - **Definition**: Represents a value that can go up and down.
 - **Example**: Current memory usage.
 ```text
 container_memory_usage_bytes{container="nginx"} 524288000
+```
 
 ### Histogram
 - **Definition**: Observes the distribution of events over configurable buckets.
@@ -101,6 +102,7 @@ http_request_duration_seconds_bucket{le="0.1"} 2405
 http_request_duration_seconds_bucket{le="0.2"} 3345
 http_request_duration_seconds_sum 53423
 http_request_duration_seconds_count 14478
+```
 
 ### Summary
 - **Definition**: Similar to histogram but provides quantiles directly.
@@ -109,7 +111,7 @@ http_request_duration_seconds_count 14478
 http_request_duration_seconds{quantile="0.95"} 0.235
 http_request_duration_seconds_sum 53423
 http_request_duration_seconds_count 14478
-
+```
 
 ## Practical Examples
 
