@@ -85,3 +85,63 @@ Prometheus is often paired with **Grafana** for visualization and **cAdvisor** f
 - **Example**: Number of HTTP requests.
 ```text
 http_requests_total{method="GET", handler="/api"} 1027
+
+
+### Gauge
+- **Definition**: Represents a value that can go up and down.
+- **Example**: Current memory usage.
+```text
+container_memory_usage_bytes{container="nginx"} 524288000
+
+### Histogram
+- **Definition**: Observes the distribution of events over configurable buckets.
+- **Example**: Request latency.
+```text
+http_request_duration_seconds_bucket{le="0.1"} 2405
+http_request_duration_seconds_bucket{le="0.2"} 3345
+http_request_duration_seconds_sum 53423
+http_request_duration_seconds_count 14478
+
+### Summary
+- **Definition**: Similar to histogram but provides quantiles directly.
+- **Example**: 95th percentile request duration.
+```text
+http_request_duration_seconds{quantile="0.95"} 0.235
+http_request_duration_seconds_sum 53423
+http_request_duration_seconds_count 14478
+
+
+## Practical Examples
+
+### Monitoring Docker Containers with cAdvisor
+1. Run cAdvisor:
+
+```bash
+docker run -d \
+  --name=cadvisor \
+  --volume=/:/rootfs:ro \
+  --volume=/var/run:/var/run:rw \
+  --volume=/sys:/sys:ro \
+  --volume=/var/lib/docker/:/var/lib/docker:ro \
+  --publish=8080:8080 \
+  gcr.io/cadvisor/cadvisor:latest
+
+
+2. Prometheus scrape config:
+
+```bash
+scrape_configs:
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['localhost:8080']
+
+### Scraping Custom Metrics
+1. Example Python app:
+
+```bash
+from prometheus_client import Counter, start_http_server
+c = Counter('my_requests_total', 'Total requests')
+start_http_server(8000)
+c.inc()  # increment counter
+
+
