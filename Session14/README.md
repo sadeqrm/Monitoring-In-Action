@@ -127,7 +127,7 @@ docker run -d \
   --volume=/var/lib/docker/:/var/lib/docker:ro \
   --publish=8080:8080 \
   gcr.io/cadvisor/cadvisor:latest
-
+```
 
 2. Prometheus scrape config:
 
