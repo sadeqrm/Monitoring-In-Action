@@ -51,7 +51,7 @@ route:
 receivers:
 - name: 'telegram'
   telegram_configs:
-  - bot_token: 6571067885:AAHa1AuvHHRRpAd5TY1KtUbuT2n5mm4LdDo
+  - bot_token: {REPLACE-YOUR-BOT-TOKEN-PLEASE}
     chat_id: 96100908
     api_url: "https://api.telegram.org"
     send_resolved: true
