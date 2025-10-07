@@ -1,6 +1,6 @@
 services:
   elasticsearch_exporter:
-    image: nx.utravs.com/prometheuscommunity/elasticsearch-exporter:latest
+    image: harbor.u360.iq/prometheuscommunity/elasticsearch-exporter:latest
     command:
       - '--es.uri=http://192.168.211.12:9200'
     restart: always
