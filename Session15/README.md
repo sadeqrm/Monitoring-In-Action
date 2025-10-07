@@ -1,8 +1,9 @@
 <h1 align="center">📊 ELK Exporter Deployment Guide </h1>
 
-<p align="center">
-  راهنمای راه‌اندازی و پیکربندی <b>Elasticsearch Exporter</b> برای مانیتورینگ ELK Stack با استفاده از <b>Prometheus</b> و <b>Grafana</b>
-</p>
+<h3 align="center">
+راهنمای استقرار و مانیتورینگ <b>Elasticsearch Exporter</b> با <b>Prometheus</b> و <b>Grafana</b>
+</h3>
+
 
 ## 🧩 معرفی
 
